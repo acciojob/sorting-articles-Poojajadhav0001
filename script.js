@@ -15,23 +15,17 @@ const bands = [
       'An Old Dog'
     ];
 
-    // article (a, an, the) काढण्यासाठी helper function
     function stripArticle(name) {
       return name.replace(/^(a |an |the )/i, '').trim();
     }
 
-    // sorting logic
     const sortedBands = bands.sort((a, b) => {
       const nameA = stripArticle(a).toLowerCase();
       const nameB = stripArticle(b).toLowerCase();
-
-      if (nameA < nameB) return -1;
-      if (nameA > nameB) return 1;
-      return 0;
+      return nameA.localeCompare(nameB);
     });
 
-    // DOM मध्ये list render करा
-    const ul = document.getElementById("band");
+    const ul = document.getElementById("bands");
 
     sortedBands.forEach(band => {
       const li = document.createElement("li");
